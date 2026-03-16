@@ -1,0 +1,23 @@
+column_name,data_type,description,notes
+referral_details_id,INTEGER,Internal ID for the referral details,Matches user_referrals.id if available
+referral_id,STRING,Unique referral identifier,From user_referrals.referral_id
+referral_source,STRING,How referral was created,Examples: "User Sign Up", "Draft Transaction", "Lead"
+referral_source_category,STRING,Derived category: Online/Offline/Lead source,See README for rules
+referral_at,DATETIME,Timestamp when referral was created,Converted to ISO
+referrer_id,STRING,User id of the person who referred,, 
+referrer_name,STRING,Name of the referrer,Initcap applied
+referrer_phone_number,STRING,Phone number of the referrer,Normalized as string
+referrer_homeclub,STRING,Referrer's homeclub,Kept as in source (no initcap)
+referee_id,STRING,User id for the referee or lead id,Used when referral_source == "Lead"
+referee_name,STRING,Name of the referred user,Initcap applied
+referee_phone,STRING,Phone number of the referee,Normalized as string
+referral_status,STRING,Human-readable referral status,From user_referral_statuses.description
+num_reward_days,INT,Number of days the reward is valid,If available in rewards table
+transaction_id,STRING,Transaction tied to referral,Matches paid_transactions.transaction_id
+transaction_status,STRING,Transaction status (e.g., Paid),Normalized to lower-case "paid"
+transaction_at,DATETIME,When the transaction happened,Converted to ISO
+transaction_location,STRING,Location of transaction,As in paid_transactions
+transaction_type,STRING,Type of transaction (e.g., New),Normalized to lower-case "new"
+updated_at,DATETIME,When referral was last updated,Converted to ISO
+reward_granted_at,DATETIME,When reward was granted,Converted to ISO
+is_business_logic_valid,BOOLEAN,True if referral passes business logic validity checks,See README for detailed rules
